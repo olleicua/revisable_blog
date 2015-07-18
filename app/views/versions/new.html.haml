@@ -1,0 +1,12 @@
+%h1 New Version
+= render 'validations', record: @version
+= form_for(@version) do |f|
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :content
+    = f.text_area :content
+  .actions
+    = f.submit
+= link_to 'Back', versions_path

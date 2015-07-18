@@ -1,0 +1,6 @@
+= link_to [post.user, post], class: 'post-summary' do
+  .post-title= post.latest.title
+  - if post.versions.count > 1
+    .post-info= pluralize post.versions.count, 'version'
+  - if post.comments.any?
+    .post-info= pluralize post.comments.count, 'comment'

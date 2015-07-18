@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:user_username])
+    @user = User.ufind(params[:user_username])
   end
 
   def set_post

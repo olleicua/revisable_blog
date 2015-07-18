@@ -1,0 +1,18 @@
+- if @post.comment?
+  = render '/versions/parent_version_summary', version: @post.parent
+.version
+  .version-author= user_link @version.user
+  - if @version.other_versions.any?
+    .version-picker
+      - @post.versions.each do |version|
+        - if version == @version
+          .version-time= display_time @version.time
+        - else
+          = render '/versions/other_version_summary', version: version
+  - else
+    .version-time= display_time @version.time
+  .verions-title= @version.title
+  .version-content= markdown @version.content
+  .version-comments
+    - @version.comments.each do |comment|
+      = render comment

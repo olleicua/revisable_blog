@@ -1,0 +1,7 @@
+.parent-version
+  = link_to [version.user, version.post, version], class: 'version-summary' do
+    .version-title= version.title
+    - if version.other_versions.any?
+      .version-info= pluralize version.other_versions.count, 'other version'
+    - if verison.comments.any?
+      .version-info= pluralize post.comments.count, 'comment'

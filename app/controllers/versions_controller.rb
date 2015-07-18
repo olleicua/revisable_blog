@@ -3,11 +3,8 @@ class VersionsController < ApplicationController
   before_action :set_version, only: [:show, :edit, :update, :destroy]
 
   def show
-    @other_versions = @post.versions.where('id != ?', @version.id)
-    @earlier_versions = @other_versions.where('time < ?', @version.time)
-    @later_versions = @other_versions.where('time > ?', @version.time)
     @parent = @post.parent
-    @comments = @post.comments
+    @comments = @version.comments
   end
 
   def new
@@ -34,12 +31,12 @@ class VersionsController < ApplicationController
   private
 
   def set_user_and_post
-    @user = User.find(params[:user_username])
+    @user = User.ufind(params[:user_username])
     @post = @user.posts.find(params[:post_id])
   end
 
   def set_version
-    @version = @post.versions.find(params[:id])
+    @version = @post.versions.find(params[:permalink])
   end
 
   def version_params

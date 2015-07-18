@@ -5,9 +5,12 @@ class User < ActiveRecord::Base
   validates :username, presence: true
 
   def self.ufind(username)
-    ret = find_by_username username
-    raise ActiveRecord::RecordNotFound,
-          "Couldn't find User with 'username'=#{username}"
+    ret = find_by username: username
+    if ret.nil?
+      raise ActiveRecord::RecordNotFound,
+            "Couldn't find User with 'username'=#{username}"
+    end
+    ret
   end
 
   def to_param

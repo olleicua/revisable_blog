@@ -1,0 +1,5 @@
+.other-version
+  = link_to [version.user, version.post, version], class: 'version-summary' do
+    .version-time= display_time version.time
+    - if verison.comments.any?
+      .version-info= pluralize post.comments.count, 'comment'
