@@ -1,0 +1,14 @@
+%h1 Editing User
+= render 'validations', record: @user
+= form_for(@user) do |f|
+  .field
+    = f.label :blog_name
+    = f.text_field :blog_name
+  .field
+    = f.label :description
+    = f.text_field :description
+  .actions
+    = f.submit
+= link_to 'Show', @user
+|
+= link_to 'Back', users_path

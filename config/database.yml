@@ -11,7 +11,7 @@ default: &default
 
 development:
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4
   database: revisable_blog
   username: root
   password:
